@@ -128,7 +128,7 @@ function App() {
   
   return (
     <div className="App">
-      <h1>HealthJourney</h1>
+      <h1>Health Journey</h1>
       <ComboBox
         options={[{ label: "508" }]}
         label={"Route"}
