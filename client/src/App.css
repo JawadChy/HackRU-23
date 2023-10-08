@@ -28,3 +28,10 @@ button:hover {
   background-color: #535bf2;
 }
 
+.MuiInputBase-input {
+  color: white;
+}
+
+.MuiFormLabel-root.Mui-focused {
+  color: white;
+}
