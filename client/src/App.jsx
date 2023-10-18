@@ -15,7 +15,6 @@ function App() {
   useEffect(() => {
     axios.get('http://localhost:3000/bus_stops')
       .then((response) => {
-        console.log(response);
         setStop(response.data);
       })
       .catch((error) => {
