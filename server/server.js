@@ -56,8 +56,8 @@ app.get('/bus_stops', (req, res) => {
 app.get("/results", (req, res) => {
     request.get({
         //need key here
-      url: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=clinic&location=${longitude}%2C${latitude}&radius=${radius}&type=doctor&key=need key`,
-      json: true
+      url: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=clinic&location=${longitude}%2C${latitude}&radius=${radius}&type=doctor&key= `
+      ,json: true
     })
     .pipe(res);
 });
@@ -89,11 +89,10 @@ app.get('/autocomplete/:searchQuery', async (req, res) => {
     }
 });
 
-
-const apiKey = "need key";
+//need key here
+const apiKey = "need key here";
 const baseUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
 const keyword = "medical facility";
-s
 const bus_stop = "40.980629,-74.120592"; // Update this with nearest bus once location is recieved from front end
 
 app.get('/medical-places', async (req, res) => {
