@@ -3,32 +3,9 @@
     padding: 20px;
   }
   
-  .med-fac {
-    width: 45%;
-    margin-left: 20px;
-    margin-top: 30px;
-  }
-  
-  .linear-diagram {
-    width: 50%;
-    position: relative;
-  }
-  
-  #verticle-line {
-    width: 1px;
-    min-height: 60px;
-    background: blue;
-    margin-left: 50%;
-    margin-bottom: 10px;
-    position: absolute;
-    top: 0;
-  }
-  
   .place {
-    height: 20%;
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
   
   h4 {

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import "../assets/Results.css"
 import Lining from "../components/steps";
-
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 export default function Resultspage(){
 
-    const [selectedRoute, setSelectedRoute] = useState('ACROSS ATLANTIC AVE AT OHIO AV');
+    const [selectedRoute, setSelectedRoute] = useState('S CAROLINA AVE AT ATLANTIC AVE');
     const l_stops = [
     {
       title: "S CAROLINA AVE AT ATLANTIC AVE",
@@ -18,8 +18,7 @@ export default function Resultspage(){
     },
     {
         title: "ATLANTIC AVE AT MARTIN LUTHER KING BLVD",
-    },
-        
+      },
   ];
   const handleStepClick = (clickedTitle) => {
     setSelectedRoute(clickedTitle)
@@ -104,27 +103,37 @@ export default function Resultspage(){
     const currentFacilities = facilitiesData[selectedRoute] || [];
 
     return (
-        <div>
-      <div style={{ display: "flex" }}>
-        <h1 style={{ flex: "1" }}>Route 508</h1>
-        <h2 style={{ flex: "1" }}>Medical Facilities</h2>
+      <div style={{ background: "#E0E0E0", padding: "20px" }}>
+    <div style={{ display: "flex"}}>
+      <h1 style={{ flex: "1"}}>Route 508</h1>
+      <h1 style={{ flex: "1" }}>Medical Facilities</h1>
+    </div>
+    <div style={{ display: "flex", height: "100%" }}>
+      <div className="place" style={{ flex: "1", height: "100px", marginRight: "20px" }}>
+        <Lining stops={l_stops} onStepClick={handleStepClick} style={{ height: "100px" }} />
       </div>
-      <div style={{ display: "flex" }}>
-        <div className="place" style={{ flex: "1" }}>
-          <Lining stops={l_stops} onStepClick={handleStepClick} />
-        </div>
-        <div style={{ flex: "1" }}>
-          {currentFacilities.map((facility, index) => (
-            <div className="place" key={index}>
-              <h5>{facility.name}</h5>
-              <p>{facility.address}</p>
-              <p>Phone Number 📞: {facility.phone}</p>
-              <p>Stars ⭐: {facility.stars}</p>
-            </div>
-          ))}
-        </div>
+      <div
+        style={{
+          flex: "1",
+          overflowY: "auto",
+          position: "sticky",
+          top: "0",
+          width: "45%", // Adjust the width if necessary
+          marginLeft: "20px", // Adjust the margin if necessary
+          marginTop: "30px", // Adjust the margin if necessary
+        }}
+      >
+        {currentFacilities.map((facility, index) => (
+          <div key={index} className="place">
+            <h5>{facility.name}</h5>
+            <p>{facility.address}</p>
+            <p>Phone Number 📞: {facility.phone}</p>
+            <p>Stars ⭐: {facility.stars}</p>
+          </div>
+        ))}
       </div>
     </div>
+  </div>
     );
     
 }
