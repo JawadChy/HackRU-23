@@ -1,46 +1,44 @@
 .container {
     display: flex;
-    justify-content: space-between;
     padding: 20px;
-}
-
-:root {
-    background-color: rgba(255, 255, 255, 0.87);
-}
-
-.linear-diagram {
-    width: 50%;
-}
-
-.med-fac {
+  }
+  
+  .med-fac {
     width: 45%;
     margin-left: 20px;
     margin-top: 30px;
-}
-
-.place {
+  }
+  
+  .linear-diagram {
+    width: 50%;
+    position: relative;
+  }
+  
+  #verticle-line {
+    width: 1px;
+    min-height: 60px;
+    background: blue;
+    margin-left: 50%;
+    margin-bottom: 10px;
+    position: absolute;
+    top: 0;
+  }
+  
+  .place {
     height: 20%;
     margin-top: 20px;
     padding: 10px;
     border-radius: 5px;
-}
-
-#verticle-line {
-    width: 1px;
-    min-height: 60px;
-    background: blue;
-    margin-left: 3.5%;
-    margin-bottom: 10px;
-}
-
-h4 {
+  }
+  
+  h4 {
     cursor: pointer;
     padding: 10px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-}
-
-
-.selected-route {
+  }
+  
+  .selected-route {
     background-color: lightblue;
-}
+  }
+  

@@ -41,10 +41,10 @@ app.get('/bus_stops', (req, res) => {
                 const [lineId, routeId, direction, municipality, on, at,desc, stopId] = line.split(',');
                 if (direction == 'Inbound'){
                     if (busStops[lineId]){
-                        busStops[lineId][stopId] = {'name': desc, 'loc': stop_loc[stopId]};
+                        busStops[lineId].push({'stopid': stopId, 'label': desc, 'loc': stop_loc[stopId]});
                     }
                     else{
-                        busStops[lineId] = {[stopId] : {'name': desc}}
+                        busStops[lineId] = [{'stopid': stopId, 'label': desc, 'loc': stop_loc[stopId]}];
                     }
                 }
             }

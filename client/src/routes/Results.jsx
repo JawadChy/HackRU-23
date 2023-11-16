@@ -1,11 +1,29 @@
 import { useState } from "react";
-import "./Results.css";
+import "../assets/Results.css"
+import Lining from "../components/steps";
 
 
-function Results() {
+export default function Resultspage(){
 
     const [selectedRoute, setSelectedRoute] = useState('ACROSS ATLANTIC AVE AT OHIO AV');
-
+    const l_stops = [
+    {
+      title: "S CAROLINA AVE AT ATLANTIC AVE",
+    },
+    {
+      title: "ATLANTIC AVE AT NEW YORK AVE",
+    },
+    {
+      title: "ATLANTIC AVE AT KENTUCKY AVE",
+    },
+    {
+        title: "ATLANTIC AVE AT MARTIN LUTHER KING BLVD",
+    },
+        
+  ];
+  const handleStepClick = (clickedTitle) => {
+    setSelectedRoute(clickedTitle)
+  };
     const facilitiesData = {
         'S CAROLINA AVE AT ATLANTIC AVE': [
             {
@@ -86,53 +104,27 @@ function Results() {
     const currentFacilities = facilitiesData[selectedRoute] || [];
 
     return (
-        <div className="container">
-            <div className="linear-diagram">
-                <div>
-                    <h1>Route 508</h1>
-                    <h4 
-                        onClick={() => setSelectedRoute('S CAROLINA AVE AT ATLANTIC AVE')}
-                        className={selectedRoute === 'S CAROLINA AVE AT ATLANTIC AVE' ? 'selected-route' : ''}
-                    >
-                        ◉ S CAROLINA AVE AT ATLANTIC AVE
-                    </h4>
-                    <div id="verticle-line"></div>
-                    <h4 
-                        onClick={() => setSelectedRoute('ATLANTIC AVE AT NEW YORK AVE')}
-                        className={selectedRoute === 'ATLANTIC AVE AT NEW YORK AVE' ? 'selected-route' : ''}
-                    >
-                        ◉ ATLANTIC AVE AT NEW YORK AVE
-                    </h4>
-                    <div id="verticle-line"></div>
-                    <h4 
-                        onClick={() => setSelectedRoute('ATLANTIC AVE AT KENTUCKY AVE')}
-                        className={selectedRoute === 'ATLANTIC AVE AT KENTUCKY AVE' ? 'selected-route' : ''}
-                    >
-                        ◉ ATLANTIC AVE AT KENTUCKY AVE
-                    </h4>
-                    <div id="verticle-line"></div>
-                    <h4 
-                        onClick={() => setSelectedRoute('ATLANTIC AVE AT MARTIN LUTHER KING BLVD')}
-                        className={selectedRoute === 'ATLANTIC AVE AT MARTIN LUTHER KING BLVD' ? 'selected-route' : ''}
-                    >
-                        ◉ ATLANTIC AVE AT MARTIN LUTHER KING BLVD
-                    </h4>
-                </div>
-            </div>
-            <div className="med-fac">
-                <h2>Medical Facilities</h2>
-                {currentFacilities.map((facility, index) => (
-                    <div className="place" key={index}>
-                        <h5>{facility.name}</h5>
-                        <p>{facility.address}</p>
-                        <p>Phone Number 📞: {facility.phone}</p>
-                        <p>Stars ⭐: {facility.stars}</p>
-                    </div>
-                ))}
-            </div>
+        <div>
+      <div style={{ display: "flex" }}>
+        <h1 style={{ flex: "1" }}>Route 508</h1>
+        <h2 style={{ flex: "1" }}>Medical Facilities</h2>
+      </div>
+      <div style={{ display: "flex" }}>
+        <div className="place" style={{ flex: "1" }}>
+          <Lining stops={l_stops} onStepClick={handleStepClick} />
         </div>
+        <div style={{ flex: "1" }}>
+          {currentFacilities.map((facility, index) => (
+            <div className="place" key={index}>
+              <h5>{facility.name}</h5>
+              <p>{facility.address}</p>
+              <p>Phone Number 📞: {facility.phone}</p>
+              <p>Stars ⭐: {facility.stars}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
     );
     
 }
-
-export default Results;
