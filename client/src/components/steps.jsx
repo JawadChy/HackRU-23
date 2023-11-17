@@ -12,9 +12,13 @@ export default function Lining({ stops, onStepClick }) {
     };
     const handleBtnClickNext = () => {
       setCurrentStep(currentStep+1);
+      const clickedTitle = stops[currentStep].title;
+      onStepClick(clickedTitle);
     };
     const handleBtnClickBack = () => {
       setCurrentStep(currentStep-1);
+      const clickedTitle = stops[currentStep].title;
+      onStepClick(clickedTitle);
     };
 
     return (
