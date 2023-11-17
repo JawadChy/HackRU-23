@@ -78,7 +78,7 @@ app.get('/medical-places', async (req, res) => {
       const params = {
           keyword: "medical facility",
           location: location, 
-          radius: 1000, 
+          radius: 300, 
           type: "hospital,urgent_care", 
           key: process.env.VITE_APP_GOOGLE_MAPS_API_KEY,
       };

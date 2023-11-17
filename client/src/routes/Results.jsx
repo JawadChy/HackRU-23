@@ -9,7 +9,7 @@ export default function Resultspage() {
     const [currentFacilities, setCurrentFacilities] = useState([]);
     const location = useLocation();
     const { from, to } = location.state || {};
-
+    
     useEffect(() => {
       const fetchStops = async () => {
           try {
@@ -25,15 +25,16 @@ export default function Resultspage() {
             });
             setSelectedRoute(stopIds);
             setL_Stops(stops);
-            
           } catch (error) {
               console.error('Fetch error:', error);
           }
       };
+
   
       if (from && to) {
           fetchStops();
       }
+      
   }, [from, to]);
   
   
