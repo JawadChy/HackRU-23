@@ -10,6 +10,7 @@ export default function Homepage() {
   const [to, setTo] = useState("");
   const [le_bus_stops, setStop] = useState('');
   const navigate = useNavigate();
+  const [busRoutes, setBusRoutes] = useState([]);
   
   useEffect(() => {
     axios.get('http://localhost:3000/bus_stops')
@@ -23,6 +24,12 @@ export default function Homepage() {
 
   const handleRouteChange = (event, newInputValue) => {
     setRoute(newInputValue);
+    resetFromToFields();
+  };
+
+  const resetFromToFields = () => {
+    setFrom("");
+    setTo("");
   };
 
   const handleSubmit = async (e) => {
@@ -49,20 +56,28 @@ export default function Homepage() {
       const data = await response.json();
       console.log(data);
 
-      navigate("/results");
+      navigate("/results", { state: { from, to } });
     } catch (error) {
       console.error("Error sending data:", error);
     }
   };
 
-  const bus_routes = [];
+  useEffect(() => {
+    axios.get('http://localhost:3000/bus_stops')
+      .then((response) => {
+        setStop(response.data);
+        const routes = [];
+        for (const key in response.data) {
+          routes.push({ label: key });
+        }
+        setBusRoutes(routes); // Set the bus routes here
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
   
-  for (const key in Object.keys(le_bus_stops)){
-    if (le_bus_stops[key]) {
-      const route = {"label":key};
-      bus_routes.push(route);
-    }
-  }
 
   return (
     <div className="App">
@@ -71,9 +86,10 @@ export default function Homepage() {
       <h1 style={{ flex: "1" }}>Health Journey</h1>
       </div>
       <ComboBox
-        options={bus_routes}
+        options={busRoutes}
         label={"Route"}
         handleRouteChange={handleRouteChange}
+        value={route} 
       />
       <ComboBox
         disabled={!route}
@@ -82,6 +98,7 @@ export default function Homepage() {
         handleRouteChange={(event, newInputValue) => {
           setFrom(newInputValue);
         }}
+        value={from} 
       />
       <ComboBox
         disabled={!route}
@@ -90,6 +107,7 @@ export default function Homepage() {
         handleRouteChange={(event, newInputValue) => {
           setTo(newInputValue);
         }}
+        value={to} 
       />
       <button type="submit" onClick={handleSubmit}>
         Submit

@@ -1,4 +1,4 @@
-export default function Locations({ facilities }) {
+function Locations({ facilities }) {
   return (
     <div className="locations-card">
       {facilities.length === 0 ? (
@@ -19,3 +19,5 @@ export default function Locations({ facilities }) {
     </div>
   );
 }
+
+export default Locations;

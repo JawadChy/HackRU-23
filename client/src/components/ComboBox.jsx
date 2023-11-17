@@ -6,10 +6,12 @@ export default function ComboBox({
   label,
   handleRouteChange,
   disabled,
+  value,
 }) {
   return (
     <Autocomplete
       disabled={disabled}
+      value={value}
       disablePortal
       id="combo-box-demo"
       options={options}
