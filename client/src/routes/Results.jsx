@@ -109,18 +109,14 @@ export default function Resultspage(){
       <h1 style={{ flex: "1" }}>Medical Facilities</h1>
     </div>
     <div style={{ display: "flex", height: "100%" }}>
-      <div className="place" style={{ flex: "1", height: "100px", marginRight: "20px" }}>
+      <div className="place" style={{ flex: "1", height: "100px", marginTop: "40px" }}>
         <Lining stops={l_stops} onStepClick={handleStepClick} style={{ height: "100px" }} />
       </div>
       <div
         style={{
           flex: "1",
-          overflowY: "auto",
-          position: "sticky",
-          top: "0",
-          width: "45%", // Adjust the width if necessary
-          marginLeft: "20px", // Adjust the margin if necessary
-          marginTop: "30px", // Adjust the margin if necessary
+          width: "400px",
+          paddingTop:"30px",
         }}
       >
         {currentFacilities.map((facility, index) => (
