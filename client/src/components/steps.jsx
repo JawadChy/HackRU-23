@@ -7,18 +7,17 @@ export default function Lining({ stops, onStepClick }) {
 
     const handleStepClick = (index) => {
       setCurrentStep(index);
-      const clickedTitle = stops[index].title;
       onStepClick(index);
     };
     const handleBtnClickNext = () => {
       setCurrentStep(currentStep+1);
       const clickedTitle = stops[currentStep].title;
-      onStepClick(index);
+      onStepClick(clickedTitle);
     };
     const handleBtnClickBack = () => {
       setCurrentStep(currentStep-1);
       const clickedTitle = stops[currentStep].title;
-      onStepClick(index);
+      onStepClick(clickedTitle);
     };
 
     return (
@@ -38,14 +37,14 @@ export default function Lining({ stops, onStepClick }) {
           current={currentStep}
           onChange={handleStepClick}
           size="default"
-          className="custom-steps" // Add a custom class for styling
+          className="custom-steps"
         >
           {stops.map((step, index) => (
             <Steps.Step
               key={index}
               title={step.title}
               description={"Stop "+(index + 1)}
-              className="custom-step" // Add a custom class for styling each step
+              className="custom-step"
             />
           ))}
         </Steps>
@@ -59,7 +58,6 @@ Lining.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
-      // Include other properties if needed
     })
   ).isRequired,
   onStepClick: PropTypes.func.isRequired,

@@ -4,10 +4,9 @@ import "../assets/Results.css";
 import Lining from "../components/steps";
 
 export default function Resultspage() {
-    const [selectedRoute, setSelectedRoute] = useState('');
+    const [selectedRoute, setSelectedRoute] = useState([]);
     const [l_stops, setL_Stops] = useState([]);
     const [currentFacilities, setCurrentFacilities] = useState([]);
-
     const location = useLocation();
     const { from, to } = location.state || {};
 
@@ -21,11 +20,10 @@ export default function Resultspage() {
               const stopIds = await response.json();
               const stops = stopIds.map(stopId => {
                 return { 
-                    id: stopId, 
-                    title: `Stop ${stopId}`, // or any other title format you have
-                    // Add a separate property for the stop ID if it's different from stopId
+                    title: stopId.label,
                 };
             });
+            setSelectedRoute(stopIds);
             setL_Stops(stops);
             
           } catch (error) {
@@ -40,11 +38,9 @@ export default function Resultspage() {
   
   
   const handleStepClick = async (index) => {
-    const clickedStop = l_stops[index];
-    const stopId = clickedStop.id; // Use the id directly
-    console.log("Clicked Stop ID:", stopId); // Log for debugging
 
-    setSelectedRoute(clickedStop.title);
+    const stopId = selectedRoute[index]['stopid']
+    
     try {
         const response = await fetch(`http://localhost:3000/medical-places?stop=${stopId}`);
         if (!response.ok) {
@@ -57,13 +53,10 @@ export default function Resultspage() {
     }
   };
 
-
-
-
     return (
         <div>
             <div style={{ display: "flex" }}>
-                <h1 style={{ flex: "1" }}>Selected Route</h1>
+            <h1 style={{ flex: "1" }}>Stops</h1>
                 <h2 style={{ flex: "1" }}>Medical Facilities</h2>
             </div>
             <div style={{ display: "flex" }}>

@@ -10,17 +10,6 @@ export default function Homepage() {
   const [to, setTo] = useState("");
   const [le_bus_stops, setStop] = useState('');
   const navigate = useNavigate();
-  const [busRoutes, setBusRoutes] = useState([]);
-  
-  useEffect(() => {
-    axios.get('http://localhost:3000/bus_stops')
-      .then((response) => {
-        setStop(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
 
   const handleRouteChange = (event, newInputValue) => {
     setRoute(newInputValue);
@@ -34,51 +23,44 @@ export default function Homepage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const payload = {
       from: from,
       to: to,
     };
-
+  
     try {
-      const response = await fetch("http://localhost:3000/submit-locations", {
+      const response = await fetch(`http://localhost:3000/stops`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
       });
-
+  
       if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        const errorMessage = await response.text(); // Read the error message from the response
+        throw new Error(`HTTP error! Status: ${response.status}. Message: ${errorMessage}`);
       }
-
-      const data = await response.json();
-      console.log(data);
-
-      navigate("/results", { state: { from, to } });
+  
+      const stopsData = await response.json();
+      navigate("/results", { state: { stopsData, from, to } });
     } catch (error) {
-      console.error("Error sending data:", error);
+      console.error("Error fetching data:", error);
     }
   };
+  
 
   useEffect(() => {
     axios.get('http://localhost:3000/bus_stops')
       .then((response) => {
         setStop(response.data);
-        const routes = [];
-        for (const key in response.data) {
-          routes.push({ label: key });
-        }
-        setBusRoutes(routes); // Set the bus routes here
       })
       .catch((error) => {
         console.error(error);
       });
   }, []);
-
   
-
   return (
     <div className="App">
       <div style={{ display: "flex" }}>
@@ -86,7 +68,7 @@ export default function Homepage() {
       <h1 style={{ flex: "1" }}>Health Journey</h1>
       </div>
       <ComboBox
-        options={busRoutes}
+        options={Object.keys(le_bus_stops)}
         label={"Route"}
         handleRouteChange={handleRouteChange}
         value={route} 
