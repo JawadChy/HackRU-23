@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { Affix } from "antd";
 import "../assets/Results.css";
 import Lining from "../components/steps";
 
@@ -66,6 +67,7 @@ export default function Resultspage() {
                 </div>
                 <div style={{ borderColor:"#0f1df8",borderStyle: "ridge",width: "0px", background: "#0f1df8", margin: "0px", padding: "0px", borderRadius:"10px",borderWidth: "5px", boxSizing: "border-box" }}></div>
                 <div style={{ flex: "1",paddingLeft:"100px", width:"100%"}}>
+                 <Affix offsetTop={120} >
                     {currentFacilities.map((facility, index) => (
                         <div className="place" key={index} style={{width:"450px"}}>
                             <h5 style={{color:"#0f1df8"}}>{facility.name}</h5>
@@ -74,6 +76,7 @@ export default function Resultspage() {
                             <p>Stars ⭐: {facility.stars}</p>
                         </div>
                     ))}
+                    </Affix>
                 </div>
             </div>
         </div>
