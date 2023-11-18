@@ -65,35 +65,37 @@ app.get('/stops', (req, res) => {
   const stopsData = findStopsBetween(from, to);
   res.json(stopsData);
 });
+
 app.get('/medical-places', async (req, res) => {
   const stop = req.query.stop;
+  const radius = req.query.radius;
   const stopLocation = stopLocations[stop];
-
+  console.log(radius)
   if (!stopLocation) {
     console.error(`Stop not found: ${stop}`);
     return res.status(404).json({ error: `Stop not found: ${stop}` });
   }
   const location = `${stopLocation.lat},${stopLocation.long}`;
   try {
-      const params = {
+      let params = {
           keyword: "medical facility",
           location: location, 
-          radius: 300, 
+          radius: radius, 
           type: "hospital,urgent_care", 
           key: process.env.VITE_APP_GOOGLE_MAPS_API_KEY,
       };
-      const response = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json`, { params });
-      if (response.status === 200) {
-          const medicalPlaces = response.data.results.map(place => ({
-              name: place.name,
-              address: place.vicinity,
-              phone: 'Not available', 
-              stars: place.rating || 'Not rated',
-          }));
-          res.json(medicalPlaces);
-      } else {
-          throw new Error(`Request failed with status code ${response.status}`);
-      }
+        const response = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json`, { params });
+        if (response.status === 200) {
+            const medicalPlaces = response.data.results.map(place => ({
+                name: place.name,
+                address: place.vicinity,
+                phone: 'Not available', 
+                stars: place.rating || 'Not rated',
+            }));
+              res.json(medicalPlaces);
+        } else {
+            throw new Error(`Request failed with status code ${response.status}`);
+        }
   } catch (error) {
       console.error("An error occurred:", error);
       res.status(500).json({ error: "An error occurred while fetching data." });

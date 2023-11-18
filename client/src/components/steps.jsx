@@ -2,20 +2,20 @@ import { Steps , ConfigProvider} from "antd";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import LeButton from "./buttons";
-export default function Lining({ stops, onStepClick }) {
+export default function Lining({ stops, onStepClick , radius}) {
     const [currentStep, setCurrentStep] = useState(0);
 
     const handleStepClick = (index) => {
       setCurrentStep(index);
-      onStepClick(index);
+      onStepClick(index,radius);
     };
     const handleBtnClickNext = () => {
       setCurrentStep(currentStep+1);
-      onStepClick(currentStep+1);
+      onStepClick(currentStep+1,radius);
     };
     const handleBtnClickBack = () => {
       setCurrentStep(currentStep-1);
-      onStepClick(currentStep-1);
+      onStepClick(currentStep-1,radius);
     };
 
     return (
@@ -59,4 +59,5 @@ Lining.propTypes = {
     })
   ).isRequired,
   onStepClick: PropTypes.func.isRequired,
+  radius: PropTypes.number.isRequired,
 };

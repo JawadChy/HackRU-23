@@ -39,17 +39,23 @@ export default function Resultspage() {
   }, [from, to]);
   
   
-  const handleStepClick = async (index) => {
+  const handleStepClick = async (index,radius) => {
 
     const stopId = selectedRoute[index]['stopid']
     
     try {
-        const response = await fetch(`http://localhost:3000/medical-places?stop=${stopId}`);
+        const response = await fetch(`http://localhost:3000/medical-places?stop=${stopId}&radius=${radius}`);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
         const facilities = await response.json();
-        setCurrentFacilities(facilities);
+        if(facilities.length === 0){
+            handleStepClick(index,radius+50)
+        }
+        else{
+            setCurrentFacilities(facilities);
+        }
+        console.log(facilities)
     } catch (error) {
         console.error('Fetch error:', error);
     }
@@ -63,7 +69,7 @@ export default function Resultspage() {
             </div>
             <div style={{ borderColor:"#0f1df8", borderStyle: "ridge", borderWidth: "10px", display: "flex",borderRadius:"20px", padding:"20px",background:"white" }}>
                 <div className="place" style={{ flex: "1", paddingRight:"100px", paddingLeft:"10px" }}>
-                    <Lining stops={l_stops} onStepClick={handleStepClick} />
+                    <Lining stops={l_stops} onStepClick={handleStepClick} radius={200}/>
                 </div>
                 <div style={{ borderColor:"#0f1df8",borderStyle: "ridge",width: "0px", background: "#0f1df8", margin: "0px", padding: "0px", borderRadius:"10px",borderWidth: "5px", boxSizing: "border-box" }}></div>
                 <div style={{ flex: "1",paddingLeft:"100px", width:"100%"}}>
