@@ -57,17 +57,18 @@ export default function Resultspage() {
     return (
         <div>
             <div style={{ display: "flex" }}>
-            <h1 style={{ flex: "1" }}>Stops</h1>
-                <h2 style={{ flex: "1" }}>Medical Facilities</h2>
+            <h1 style={{ flex: "1", color:"#0f1df8"}}>Stops</h1>
+                <h1 style={{paddingLeft:"200px", flex: "1" , color:"#0f1df8"}}>Medical Facilities</h1>
             </div>
             <div style={{ display: "flex" }}>
-                <div className="place" style={{ flex: "1" }}>
+                <div className="place" style={{ flex: "1", paddingRight:"100px" }}>
                     <Lining stops={l_stops} onStepClick={handleStepClick} />
                 </div>
-                <div style={{ flex: "1" }}>
+                <div style={{ width: "5px", background: "#0f1df8", margin: "0px", padding: "0px", border: "none", boxSizing: "border-box" }}></div>
+                <div style={{ flex: "1",paddingLeft:"150px"}}>
                     {currentFacilities.map((facility, index) => (
                         <div className="place" key={index}>
-                            <h5>{facility.name}</h5>
+                            <h5 style={{color:"#0f1df8"}}>{facility.name}</h5>
                             <p>{facility.address}</p>
                             <p>Phone Number 📞: {facility.phone}</p>
                             <p>Stars ⭐: {facility.stars}</p>
