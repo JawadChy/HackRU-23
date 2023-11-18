@@ -10,7 +10,7 @@ input[type="text"] {
   padding: 0.5rem;
   font-size: 1rem;
   border: 1px solid #0f1df8;
-  background-color: #ccc;
+  background-color: white;
   border-radius: 4px;
   width: 300px;
 }

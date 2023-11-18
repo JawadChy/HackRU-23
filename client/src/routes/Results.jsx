@@ -57,17 +57,17 @@ export default function Resultspage() {
     return (
         <div>
             <div style={{ display: "flex" }}>
-            <h1 style={{ flex: "1", color:"#0f1df8"}}>Stops</h1>
-                <h1 style={{paddingLeft:"200px", flex: "1" , color:"#0f1df8"}}>Medical Facilities</h1>
+            <h1 style={{paddingLeft:"100px", flex: "1", color:"#0f1df8"}}>Stops</h1>
+                <h1 style={{paddingLeft:"0px", flex: "1" , color:"#0f1df8"}}>Medical Facilities</h1>
             </div>
-            <div style={{ display: "flex" }}>
-                <div className="place" style={{ flex: "1", paddingRight:"100px" }}>
+            <div style={{ borderColor:"#0f1df8", borderStyle: "ridge", borderWidth: "10px", display: "flex",borderRadius:"20px", padding:"20px",background:"white" }}>
+                <div className="place" style={{ flex: "1", paddingRight:"100px", paddingLeft:"10px" }}>
                     <Lining stops={l_stops} onStepClick={handleStepClick} />
                 </div>
-                <div style={{ width: "5px", background: "#0f1df8", margin: "0px", padding: "0px", border: "none", boxSizing: "border-box" }}></div>
-                <div style={{ flex: "1",paddingLeft:"150px"}}>
+                <div style={{ borderColor:"#0f1df8",borderStyle: "ridge",width: "0px", background: "#0f1df8", margin: "0px", padding: "0px", borderRadius:"10px",borderWidth: "5px", boxSizing: "border-box" }}></div>
+                <div style={{ flex: "1",paddingLeft:"100px", width:"100%"}}>
                     {currentFacilities.map((facility, index) => (
-                        <div className="place" key={index}>
+                        <div className="place" key={index} style={{width:"450px"}}>
                             <h5 style={{color:"#0f1df8"}}>{facility.name}</h5>
                             <p>{facility.address}</p>
                             <p>Phone Number 📞: {facility.phone}</p>

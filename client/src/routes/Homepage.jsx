@@ -74,6 +74,7 @@ export default function Homepage() {
       justifyContent: "center",
       margin: "auto",
       minHeight: "50vh",
+      background:"white",
       border: "20px solid #0f1df8", 
       borderRadius: "10px",
       padding: "20px",
