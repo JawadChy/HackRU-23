@@ -75,7 +75,7 @@ export default function Homepage() {
       margin: "auto",
       minHeight: "50vh",
       background:"white",
-      border: "20px solid #0f1df8", 
+      border: "5px solid #0f1df8", 
       borderRadius: "10px",
       padding: "20px",
       }}>

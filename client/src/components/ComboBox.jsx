@@ -20,9 +20,6 @@ export default function ComboBox({
         "& .MuiAutocomplete-paper": {
           background: "yellow", // Customize the paper (dropdown) background color
         },
-        "& .MuiAutocomplete-inputRoot": {
-          backgroundColor: "#0f1df8", // Customize the input root background color
-        },
         "& .MuiAutocomplete-clearIndicator": {
           color: "red", // Customize clear indicator color
         },
