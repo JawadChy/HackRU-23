@@ -70,7 +70,6 @@ app.get('/medical-places', async (req, res) => {
   const stop = req.query.stop;
   const radius = req.query.radius;
   const stopLocation = stopLocations[stop];
-  console.log(radius)
   if (!stopLocation) {
     console.error(`Stop not found: ${stop}`);
     return res.status(404).json({ error: `Stop not found: ${stop}` });
