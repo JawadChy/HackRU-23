@@ -65,7 +65,7 @@ export default function Homepage() {
   }, []);
   return (
     <div>
-    <div style={{height: "21vh"}}>
+    <div style={{height: "10vh"}}>
 
     </div>
     <div className="App" style={{
@@ -82,8 +82,8 @@ export default function Homepage() {
       <div style={{ display: "flex" }}>
       <img style={{ flex: "1", height:"125px", paddingTop:"30px"}} src="../src/assets/HealthJourneyLogo.png" alt="Logo" />
       <div style={{flex: "1"}}>
-        <h1 style={{ color:"#0f1df8", fontFamily:"Roboto", borderBottom:"0px", marginBottom:"0px"}}>Health </h1>
-        <h1 style={{ color:"#ffa061", fontFamily:"Roboto", borderTop:"0px", marginTop:"0px"}}>Journey</h1>
+        <h1 className="logo" style={{ color:"#0f1df8", borderBottom:"0px", marginBottom:"0px"}}>Health </h1>
+        <h1 className="logo" style={{ color:"#ffa061", borderTop:"0px", marginTop:"0px"}}>Journey</h1>
       </div>
       </div>
       <ComboBox
