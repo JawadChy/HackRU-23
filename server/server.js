@@ -15,6 +15,7 @@ app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
 
+// bus stops
 app.get('/bus_stops', (req, res) => {
     const busStops = {};
     const stop_loc = {};
