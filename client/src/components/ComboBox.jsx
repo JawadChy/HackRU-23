@@ -15,19 +15,20 @@ export default function ComboBox({
       disablePortal
       id="combo-box-demo"
       options={options}
+      style={{marginBottom:"15px"}}
       sx={{ 
         width: 300, 
         "& .MuiAutocomplete-paper": {
-          background: "yellow", // Customize the paper (dropdown) background color
+          background: "yellow", 
         },
         "& .MuiAutocomplete-clearIndicator": {
-          color: "red", // Customize clear indicator color
+          color: "red", 
         },
         "& .MuiAutocomplete-popupIndicator": {
-          color: "#ffa061", // Customize popup indicator color
+          color: "#ffa061", 
         },
         "& .MuiAutocomplete-option": {
-          backgroundColor: "#2e9fc9", // Customize option background color
+          backgroundColor: "#2e9fc9", 
         },
       }}
       onInputChange={handleRouteChange}

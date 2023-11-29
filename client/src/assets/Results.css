@@ -3,7 +3,7 @@
 }
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Exo', sans-serif;
 }
 
 .header {
@@ -12,6 +12,7 @@ body {
   margin-left: 5%;
   margin-right: 5%;
   margin-bottom: 2%;
+  font-family: 'Exo', sans-serif;
 }
 
 h1 {

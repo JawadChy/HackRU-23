@@ -67,7 +67,7 @@ export default function Homepage() {
   }, []);
   return (
     <>
-    <div style={{height:"20vh"}}/>
+    <div style={{height:"10vh"}}/>
     <Card hoverable="true" style={{padding:"30px", display: "flex", flexDirection: "column", alignItems: "center"}} >
       <div style={{ display: "flex" ,width:"50%"}}>
         <img style={{ flex: "1", height:"125px", paddingTop:"30px", marginRight:"0px",borderRight:"0px"}} src="../src/assets/HealthJourneyLogo.png" alt="Logo" />
@@ -77,15 +77,16 @@ export default function Homepage() {
         </div>
       </div>
       <Divider style={{background:"#0f1df8"}}/>
+      <div style={{margin:"10px"}}>
       <ComboBox
         options={Object.keys(le_bus_stops)}
         label={"Route"}
         handleRouteChange={handleRouteChange}
         value={route} 
+        style={{ marginBottom: "10px !important" }}
       />
       <ComboBox
         disabled={!route}
-        style={{paddingTop:"10px"}}
         options={le_bus_stops[route] || []}
         label={"From"}
         handleRouteChange={(event, newInputValue) => {
@@ -99,18 +100,21 @@ export default function Homepage() {
           }
           setToOptions(le_bus_stops[route]?.filter(stop => stop['stopid'] > id_from ) || []);
         }}
+        style={{ marginBottom: "10px !important" }}
         value={from} 
       />
       <ComboBox
         disabled={!route}
         options={toOptions || []}
         label={"To"}
+        style={{ marginBottom: "10px !important" }}
         handleRouteChange={(event, newInputValue) => {
           setTo(newInputValue);
         }}
         value={to} 
       />
-      <Button onClick={handleSubmit} type="primary" size="large" style={{ background: "#ffa061", borderColor: "#ffa061", margin:"10px"}}> Find! </Button>
+      </div>
+      <Button onClick={handleSubmit} type="primary" size="large" style={{ background: "#ffa061", borderColor: "#ffa061", marginLeft:"40%", marginTop:"10px", fontFamily: 'Exo'}}> Find! </Button>
       
     </Card>
     </>
