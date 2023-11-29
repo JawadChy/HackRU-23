@@ -1,3 +1,68 @@
+:root {
+  font-family: 'Exo', sans-serif;
+}
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.header {
+  margin-top: 4%;
+  display: flex;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 2%;
+}
+
+h1 {
+  flex: 1;
+  color: #0f1df8;
+  margin: 0;
+  margin-left: 5%;
+}
+
+.container {
+  border-top: 15px solid #0f1df8;
+  display: flex;
+  padding: 20px;
+  background: white;
+  border-radius: 20px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.place {
+  flex: 1;
+  padding-right: 100px;
+  padding-left: 10px;
+  width: 100%;
+}
+
+.divider {
+  border-color: #0f1df8;
+  border-style: ridge;
+  width: 0;
+  background: #0f1df8;
+  margin: 0;
+  padding: 0;
+  border-width: 5px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.affix-container {
+  flex: 1;
+  width: 100%;
+}
+
+.facility-list {
+  overflow-y: auto;
+  max-height: 95vh;
+}
+
+h5 {
+  color: #0f1df8;
+}
 .container {
     display: flex;
     padding: 20px;

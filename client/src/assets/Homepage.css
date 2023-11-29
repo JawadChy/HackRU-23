@@ -1,3 +1,6 @@
+:root {
+  font-family: 'Exo', sans-serif;
+}
 .App {
   display: flex;
   flex-direction: column;
@@ -49,5 +52,5 @@ button:active {
 }
 
 .logo {
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif !important;
+  font-family: 'Exo', sans-serif;
 }

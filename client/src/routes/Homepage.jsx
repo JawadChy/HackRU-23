@@ -4,6 +4,8 @@ import { Button } from "antd";
 import "../assets/Homepage.css";
 import axios from 'axios'
 import ComboBox from "../components/ComboBox";
+import Card from "antd/es/card/Card";
+import { Divider } from 'antd';
 
 export default function Homepage() {
   const [route, setRoute] = useState(null);
@@ -64,28 +66,17 @@ export default function Homepage() {
       });
   }, []);
   return (
-    <div>
-    <div style={{height: "10vh"}}>
-
-    </div>
-    <div className="App" style={{
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      margin: "auto",
-      minHeight: "50vh",
-      background:"white",
-      border: "5px solid #0f1df8", 
-      borderRadius: "10px",
-      padding: "20px",
-      }}>
-      <div style={{ display: "flex" }}>
-      <img style={{ flex: "1", height:"125px", paddingTop:"30px"}} src="../src/assets/HealthJourneyLogo.png" alt="Logo" />
-      <div style={{flex: "1"}}>
-        <h1 className="logo" style={{ color:"#0f1df8", borderBottom:"0px", marginBottom:"0px"}}>Health </h1>
-        <h1 className="logo" style={{ color:"#ffa061", borderTop:"0px", marginTop:"0px"}}>Journey</h1>
+    <>
+    <div style={{height:"20vh"}}/>
+    <Card hoverable="true" style={{padding:"30px", display: "flex", flexDirection: "column", alignItems: "center"}} >
+      <div style={{ display: "flex" ,width:"50%"}}>
+        <img style={{ flex: "1", height:"125px", paddingTop:"30px", marginRight:"0px",borderRight:"0px"}} src="../src/assets/HealthJourneyLogo.png" alt="Logo" />
+        <div style={{flex: "1"}}>
+          <h1 className="logo" style={{ color:"#0f1df8", paddingTop:"45px", paddingLeft:"0px"}}>Health </h1>
+          <h1 className="logo" style={{ color:"#ffa061", paddingLeft:"0px"}}>Journey</h1>
+        </div>
       </div>
-      </div>
+      <Divider style={{background:"#0f1df8"}}/>
       <ComboBox
         options={Object.keys(le_bus_stops)}
         label={"Route"}
@@ -94,6 +85,7 @@ export default function Homepage() {
       />
       <ComboBox
         disabled={!route}
+        style={{paddingTop:"10px"}}
         options={le_bus_stops[route] || []}
         label={"From"}
         handleRouteChange={(event, newInputValue) => {
@@ -102,12 +94,10 @@ export default function Homepage() {
           for (const currStop in le_bus_stops[route].entries()){
             console.log(le_bus_stops[route])
             if (currStop['label'] == from){
-              // console.log(currStop['stopid'])
               id_from = currStop['stopid']
             }
           }
           setToOptions(le_bus_stops[route]?.filter(stop => stop['stopid'] > id_from ) || []);
-          // console.log("here",le_bus_stops[route]?.filter(stop => stop['stopid'] > id_from ) || []);
         }}
         value={from} 
       />
@@ -120,8 +110,9 @@ export default function Homepage() {
         }}
         value={to} 
       />
-      <Button onClick={handleSubmit} type="primary" size="large" style={{ background: "#ffa061", borderColor: "#ffa061" }}> Find! </Button>
-    </div>
-    </div>
+      <Button onClick={handleSubmit} type="primary" size="large" style={{ background: "#ffa061", borderColor: "#ffa061", margin:"10px"}}> Find! </Button>
+      
+    </Card>
+    </>
   );
 }

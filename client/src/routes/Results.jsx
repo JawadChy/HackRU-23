@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Affix } from "antd";
+import { Affix, Divider } from "antd";
 import "../assets/Results.css";
 import Lining from "../components/steps";
 
@@ -62,31 +62,32 @@ export default function Resultspage() {
   };
 
     return (
-        <div>
-            <div style={{ display: "flex" }}>
-            <h1 style={{paddingLeft:"100px", flex: "1", color:"#0f1df8"}}>Stops</h1>
-                <h1 style={{paddingLeft:"0px", flex: "1" , color:"#0f1df8"}}>Medical Facilities</h1>
+    <>
+        <div className="header">
+            <h1 >Stops</h1>
+            <h1 >Medical Facilities</h1>
+        </div>
+        <div className="container">
+            <div className="place">
+                <Lining stops={l_stops} onStepClick={handleStepClick} radius={200}/>
             </div>
-            <div style={{ borderColor:"#0f1df8", borderStyle: "ridge", borderWidth: "10px", display: "flex",borderRadius:"20px", padding:"20px",background:"white" }}>
-                <div className="place" style={{ flex: "1", paddingRight:"100px", paddingLeft:"10px" }}>
-                    <Lining stops={l_stops} onStepClick={handleStepClick} radius={200}/>
-                </div>
-                <div style={{ borderColor:"#0f1df8",borderStyle: "ridge",width: "0px", background: "#0f1df8", margin: "0px", padding: "0px", borderRadius:"10px",borderWidth: "5px", boxSizing: "border-box" }}></div>
-                <div style={{ flex: "1",paddingLeft:"100px", width:"100%"}}>
-                 <Affix offsetTop={10} style={{ flex: "1", width: "100%"  }}>
-                <div style={{overflowY:"auto" , maxHeight: "95vh"}}>
-                    {currentFacilities.map((facility, index) => (
-                        <div className="place" key={index} style={{width:"450px"}}>
-                            <h5 style={{color:"#0f1df8"}}>{facility.name}</h5>
-                            <p>{facility.address}</p>
-                            <p>Phone Number 📞: {facility.phone}</p>
-                            <p>Stars ⭐: {facility.stars}</p>
-                        </div>
-                    ))}
+            <div className="affix-container">
+                <Affix className="affix-container" offsetTop={10} style={{ flex: "1"}}>
+                    <div className="facility-list">
+                        {currentFacilities.map((facility, index) => (
+                            <div className="place" key={index} style={{width:"100%"}}>
+                                {index < 3 && <h4 style={{margin:"0px"}}>Sponsored</h4>}
+                                <h3 style={{color:"#0f1df8", marginTop:"0px"}}>{facility.name}</h3>
+                                <p>{facility.address}</p>
+                                <p>Phone Number 📞: {facility.phone}</p>
+                                <p>Stars ⭐: {facility.stars}</p>
+                                <Divider type="horizontal" />
+                            </div>
+                        ))}
                     </div>
-                    </Affix>
-                </div>
+                </Affix>
             </div>
         </div>
+    </>
     );
 }
