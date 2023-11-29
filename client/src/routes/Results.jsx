@@ -64,18 +64,19 @@ export default function Resultspage() {
     return (
     <>
         <div className="header">
+            <a href="/">Home</a>
             <h1 >Stops</h1>
             <h1 >Medical Facilities</h1>
         </div>
         <div className="container">
-            <div className="place">
+            <div className="place" style={{paddingRight:"100px"}}>
                 <Lining stops={l_stops} onStepClick={handleStepClick} radius={200}/>
             </div>
             <div className="affix-container">
                 <Affix className="affix-container" offsetTop={10} style={{ flex: "1"}}>
                     <div className="facility-list">
                         {currentFacilities.map((facility, index) => (
-                            <div className="place" key={index} style={{width:"100%"}}>
+                            <div className="place" key={index}>
                                 {index < 3 && <h4 style={{margin:"0px"}}>Sponsored</h4>}
                                 <h3 style={{color:"#0f1df8", marginTop:"0px"}}>{facility.name}</h3>
                                 <p>{facility.address}</p>
