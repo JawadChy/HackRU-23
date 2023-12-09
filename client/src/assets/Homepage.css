@@ -12,7 +12,7 @@
 input[type="text"], .MuiInputBase-input {
   padding: 0.5rem;
   font-size: 1rem;
-  border: 1px solid #0f1df8;
+  border: 1px solid #1c2c54;
   background-color: white;
   border-radius: 4px;
   width: 300px;
@@ -22,7 +22,7 @@ input[type="text"], .MuiInputBase-input {
 button {
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  background-color: #646cff;
+  background-color: #1c2c54;
   color: white;
   border: none;
   border-radius: 4px;

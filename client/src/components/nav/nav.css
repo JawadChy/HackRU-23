@@ -1,0 +1,8 @@
+.navbar-brand {
+  color: var(--le_colors_primary);
+  font-weight: bold;
+  font-size: 30px;
+}
+.navbar-custom-text {
+  color: white !important;
+}

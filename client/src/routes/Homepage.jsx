@@ -1,11 +1,13 @@
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "antd";
+import NavbarComponent from "../components/nav/nav";
 import "../assets/Homepage.css";
 import axios from 'axios'
 import ComboBox from "../components/ComboBox";
 import Card from "antd/es/card/Card";
 import { Divider } from 'antd';
+import njcornerlogo from '../assets/NJtransitcornerlogo.png'
 
 export default function Homepage() {
   const [route, setRoute] = useState(null);
@@ -67,16 +69,17 @@ export default function Homepage() {
   }, []);
   return (
     <>
-    <div style={{height:"10vh"}}/>
-    <Card hoverable="true" style={{padding:"30px", display: "flex", flexDirection: "column", alignItems: "center"}} >
-      <div style={{ display: "flex" ,width:"50%"}}>
+    <NavbarComponent/>
+    <div style={{height:"20vh",padding:"0px",}}/>
+    <Card hoverable="true" style={{ padding:"0px",display: "flex", flexDirection: "column", alignItems: "center"}} >
+      <div style={{ padding:"0px",display: "flex" ,width:"50%"}}>
         <img style={{ flex: "1", height:"125px", paddingTop:"30px", marginRight:"0px",borderRight:"0px"}} src="../src/assets/HealthJourneyLogo.png" alt="Logo" />
         <div style={{flex: "1"}}>
-          <h1 className="logo" style={{ color:"#0f1df8", paddingTop:"45px", paddingLeft:"0px"}}>Health </h1>
-          <h1 className="logo" style={{ color:"#ffa061", paddingLeft:"0px"}}>Journey</h1>
+          <h1 className="logo" style={{ color:"#1c2c54", paddingTop:"45px", paddingLeft:"0px"}}>Health </h1>
+          <h1 className="logo" style={{ color:"#f5853e", paddingLeft:"0px"}}>Journey</h1>
         </div>
       </div>
-      <Divider style={{background:"#0f1df8"}}/>
+      <Divider style={{background:"#1c2c54"}}/>
       <div style={{margin:"10px"}}>
       <ComboBox
         options={Object.keys(le_bus_stops)}
@@ -114,8 +117,10 @@ export default function Homepage() {
         value={to} 
       />
       </div>
-      <Button onClick={handleSubmit} type="primary" size="large" style={{ background: "#ffa061", borderColor: "#ffa061", marginLeft:"40%", marginTop:"10px", fontFamily: 'Exo'}}> Find! </Button>
-      
+      <Button onClick={handleSubmit} type="primary" size="large" style={{ background: "#f5853e", borderColor: "#ffa061", marginLeft:"40%", marginTop:"10px", fontFamily: 'Exo'}}> Find! </Button>
+      <div style={{ marginLeft: "auto", marginTop: "auto", marginBottom: "0px" }}>
+          <img src={njcornerlogo} style={{paddingTop:"10px", maxHeight: '30px' }} alt="NJ Transit Corner Logo" />
+        </div>
     </Card>
     </>
   );
